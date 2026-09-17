@@ -1,0 +1,3 @@
+-- Track order (Adventurer < Veteran < Champion < Hero < Myth) and cross-track
+-- equivalence checkpoints. Hand-edited per patch. Per-item ceilings are never
+-- stored here -- always read live from the game API.

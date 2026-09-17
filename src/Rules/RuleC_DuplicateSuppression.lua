@@ -1,0 +1,2 @@
+-- Rule C: among items flagged by Rule B, keep exactly one per (slot, track)
+-- group; the rest fall through to Rule A.

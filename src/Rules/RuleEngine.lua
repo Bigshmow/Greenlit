@@ -1,0 +1,2 @@
+-- Evaluate(item): runs Rule B -> Rule C -> Rule A in order, returns the first
+-- decisive Evaluation, or nil if no rule fires (the Conservative default).

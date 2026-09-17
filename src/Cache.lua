@@ -1,0 +1,2 @@
+-- Per-slot item state (equipped + bags + personal bank), diffing, invalidation.
+-- Owns all direct game API access; rules receive plain data only.

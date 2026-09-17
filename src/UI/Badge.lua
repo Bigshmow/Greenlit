@@ -1,0 +1,1 @@
+-- Renders the Vendor Candidate badge from an Evaluation. No decision logic.

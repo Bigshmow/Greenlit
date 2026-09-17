@@ -1,0 +1,2 @@
+-- Registers BAG_UPDATE_DELAYED, PLAYER_EQUIPMENT_CHANGED, GET_ITEM_INFO_RECEIVED.
+-- Runs the cheap equipLoc pre-filter before handing off to Cache.lua.

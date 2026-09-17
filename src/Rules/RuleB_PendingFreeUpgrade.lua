@@ -1,0 +1,2 @@
+-- Rule B: pending free upgrade -- would upgrading this item cross a watermark
+-- checkpoint the equipped item hasn't reached yet?

@@ -1,0 +1,2 @@
+-- Rule A: strict ceiling comparison (track + rank position, never raw ilvl).
+-- Ties, including same-track duplicates, resolve to no badge.

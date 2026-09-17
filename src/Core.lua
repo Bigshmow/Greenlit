@@ -1,0 +1,1 @@
+-- Addon lifecycle (ADDON_LOADED), SavedVariables setup, slash command for manual rescan.
