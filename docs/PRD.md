@@ -83,8 +83,7 @@ Evaluation
 ```
 
 That way we don't lock ourselves into implementation. (See
-`ARCHITECTURE.md` once it exists for the actual rule pipeline as it's
-designed.)
+`ARCHITECTURE.md` for the actual rule pipeline as it's designed.)
 
 ## 7. Technical Assumptions
 

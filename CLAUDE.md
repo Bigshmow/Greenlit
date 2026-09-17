@@ -21,15 +21,17 @@ contribute to progression," it doesn't belong.
 
 ## Current status
 
-Planning complete. No Lua exists yet. `docs/ARCHITECTURE.md` defines the
-target folder structure and module breakdown — nothing under `src/` exists
-until this session creates it.
+Scaffolding complete: `Greenlit.toc` and empty stub files for every module
+under `src/` exist per `ARCHITECTURE.md`'s folder structure. No real rule
+logic has been written yet.
 
 ## Immediate next step
 
-Scaffold `Greenlit.toc` and empty stub files for each module under `src/`
-per `ARCHITECTURE.md`'s folder structure, before writing any real rule
-logic.
+Start filling in real logic, beginning with `Config.lua` (track order +
+cross-track equivalence checkpoints, verified against current live patch
+notes — deliberately left unseeded, see `DECISION_LOG.md`) since the rule
+files depend on it. The `Greenlit.toc` Interface number is also still a
+placeholder and needs verifying against the current live Retail patch.
 
 ## Working agreements
 
