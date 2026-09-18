@@ -2,16 +2,11 @@
 
 ## 1. Problem Statement
 
-After running dungeons, raids, or Delves, players accumulate equipment that
-may or may not still have progression value. Determining whether an item can
-be safely vendored requires understanding item level, upgrade tracks, crest
-discount rules, and currently owned equipment. This creates unnecessary
-cognitive load and slows routine inventory cleanup.
+After running dungeons, raids, or Delves, players accumulate equipment that may or may not still have progression value. Determining whether an item can be safely vendored requires understanding item level, upgrade tracks, crest discount rules, and currently owned equipment. This creates unnecessary cognitive load and slows routine inventory cleanup.
 
 ## 2. Goal
 
-Help players confidently identify equipment that no longer has progression
-value.
+Help players confidently identify equipment that no longer has progression value.
 
 Not:
 - Sell gear.
@@ -37,13 +32,11 @@ Greenlit does not:
 
 **Conservative** — If Greenlit is unsure, it does nothing.
 
-**Explainable** — Every recommendation must have a human-readable
-explanation.
+**Explainable** — Every recommendation must have a human-readable explanation.
 
 **Transparent** — No hidden heuristics.
 
-**Focused** — Every feature must answer: "Can this item still contribute to
-progression?" If not, it probably doesn't belong.
+**Focused** — Every feature must answer: "Can this item still contribute to progression?" If not, it probably doesn't belong.
 
 ## 5. MVP
 
@@ -83,8 +76,7 @@ Evaluation
   Reasons[]
 ```
 
-That way we don't lock ourselves into implementation. (See
-`ARCHITECTURE.md` for the actual rule pipeline as it's designed.)
+That way we don't lock ourselves into implementation. (See `ARCHITECTURE.md` for the actual rule pipeline as it's designed.)
 
 ## 7. Technical Assumptions
 
@@ -113,15 +105,9 @@ Nothing in this section blocks v1.
 - Settings
 - Badge customization
 - Warband / account-wide gear evaluation (deferred fast-follow after MVP)
-- Off-spec Equipment Manager set awareness (confirmed feasible via
-  `C_EquipmentSet`, deferred fast-follow)
-- Crest-cost / upgrade-efficiency guidance (separate from whether an item
-  has progression value at all)
+- Off-spec Equipment Manager set awareness (confirmed feasible via `C_EquipmentSet`, deferred fast-follow)
+- Crest-cost / upgrade-efficiency guidance (separate from whether an item has progression value at all)
 
 ## A note on document structure
 
-This PRD is intentionally scoped to "what are we building and why." How it's
-organized (modules, data flow, folder structure) lives in
-`ARCHITECTURE.md`. Why we made specific tradeoffs lives in
-`DECISION_LOG.md`. Five bullets of principle with nothing technical in them
-live in `PHILOSOPHY.md`.
+This PRD is intentionally scoped to "what are we building and why." How it's organized (modules, data flow, folder structure) lives in `ARCHITECTURE.md`. Why we made specific tradeoffs lives in `DECISION_LOG.md`. Five bullets of principle with nothing technical in them live in `PHILOSOPHY.md`.

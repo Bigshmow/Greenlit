@@ -1,0 +1,19 @@
+## Interface: 110107
+## Title: Greenlit |cffff8800(Dev)|r
+## Notes: Flags gear with no remaining progression value, so it's safe to vendor. Development build -- do not run alongside the production Greenlit addon.
+## Author: Bigshmow
+## Version: 0.1.0-dev
+
+# TODO: verify Interface number against the current live Retail patch before
+# testing/packaging -- not yet confirmed for this session (see DECISION_LOG.md).
+
+src/Core.lua
+src/Config.lua
+src/Cache.lua
+src/Events.lua
+src/Rules/RuleA_CeilingComparison.lua
+src/Rules/RuleB_PendingFreeUpgrade.lua
+src/Rules/RuleC_DuplicateSuppression.lua
+src/Rules/RuleEngine.lua
+src/UI/Badge.lua
+src/UI/Tooltip.lua
