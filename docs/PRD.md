@@ -31,6 +31,7 @@ Greenlit does not:
 - Manage inventory.
 - Manage equipment sets.
 - Make decisions based on class/spec tuning.
+- Evaluate leveling gear or non-max-level characters.
 
 ## 4. Core Principles
 

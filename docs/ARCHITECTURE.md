@@ -32,6 +32,15 @@ Greenlit/
 │   ├── PHILOSOPHY.md
 │   ├── DECISION_LOG.md
 │   └── ARCHITECTURE.md
+├── spec/                                -- LuaUnit tests for pure-logic files only
+│   ├── helpers/
+│   │   └── load_addon_file.lua
+│   ├── Config_spec.lua
+│   └── rules/
+│       ├── RuleA_CeilingComparison_spec.lua
+│       ├── RuleB_PendingFreeUpgrade_spec.lua
+│       ├── RuleC_DuplicateSuppression_spec.lua
+│       └── RuleEngine_spec.lua
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -61,9 +70,14 @@ UI/Badge.lua, UI/Tooltip.lua (pure consumers, no logic of their own)
 **Core.lua** — addon lifecycle (`ADDON_LOADED`), any SavedVariables setup
 (none anticipated for V1), and a slash command for a manual rescan.
 
-**Events.lua** — registers `BAG_UPDATE_DELAYED`, `PLAYER_EQUIPMENT_CHANGED`,
-and `GET_ITEM_INFO_RECEIVED`. Runs the cheap `equipLoc` check first so
+**Events.lua** — registers `PLAYER_ENTERING_WORLD`, `BAG_UPDATE_DELAYED`,
+`PLAYER_EQUIPMENT_CHANGED`, `GET_ITEM_INFO_RECEIVED`, `BANKFRAME_OPENED`,
+and `PLAYERBANKSLOTS_CHANGED`. Runs the cheap `equipLoc` check first so
 non-armor-slot items never reach the more expensive upgrade-info reads.
+`PLAYER_ENTERING_WORLD` does the one-time initial sync (all currently
+equipped slots + bags) that nothing else would ever trigger — every other
+event only reacts to something *changing*, so without this, a player who
+logs in and never re-equips anything would never get a single evaluation.
 
 **Cache.lua** — maintains the known-item map across equipped + bags +
 personal bank (single character, V1 scope). Diffs on every relevant event.
@@ -74,11 +88,21 @@ one item that changed — the comparison target moved for everything in bags
 too.
 
 **Config.lua** — the track order (Adventurer < Veteran < Champion < Hero <
-Myth) and the cross-track equivalence checkpoint table (e.g. "Champion max
-== Hero rank 2"). This is the one file expected to need a hand-edit every
-time Blizzard shifts the numbers mid-patch or mid-season. Per-item ceilings
-themselves are never stored here — those are always read live from the
-game's own API.
+Myth), the cross-track equivalence checkpoint table (e.g. "Champion max
+== Hero rank 2"), and every other piece of Greenlit's own domain data or
+decision that doesn't require a running WoW client to evaluate — e.g.
+`armorEquipLocs` (which equip-locs Greenlit cares about at all) and
+`NormalizeEquipLoc` (merging robe into chest, since they compete for the
+same slot). The dividing line with `Cache.lua`/`Events.lua` isn't "reads
+data" vs "doesn't" — `Config.lua` also gets read by those files — it's
+whether the logic itself needs the live client to run and be tested. Data
+that's tied to the runtime (e.g. numeric equipment-slot constants that
+only exist as WoW globals) stays in `Events.lua` instead, since it can't
+be loaded standalone for a test even if it looks like plain data. Track
+order and checkpoints are the one part of this file expected to need a
+hand-edit every time Blizzard shifts the numbers mid-patch or mid-season.
+Per-item ceilings themselves are never stored here — those are always
+read live from the game's own API.
 
 **Rules/RuleEngine.lua** — `Evaluate(item)`, the single entry point. Runs
 each rule in order and returns as soon as one produces a decisive result:
